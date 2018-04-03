@@ -1,4 +1,4 @@
-Im=imread('C:\Users\azril811116\DesKtop\image\kindize\Xray\640.bmp');
+Im=imread('C:\Users\azril811116\DesKtop\image\kindize\CT\ct1.bmp');
 [height,width]=size(Im);
 mode=zeros(2,height*width,256);
 change=ones(height*width,256).*1000;
@@ -7,7 +7,7 @@ MODE=zeros(1,256);
 last=ones(1,256);%mode last
 rast=ones(1,256);%R last
 cast=ones(1,256);%change last
-[queue,l,P,PP]=AICE(Im,3,20,0.5,0.5);
+[queue,l,P,PP]=AICE(Im,2,40,0.3,0.45);
 L=164;H=220;
 for I=L+1:H+1
         for J=1:l-1

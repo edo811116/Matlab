@@ -18,7 +18,7 @@ function [p,Lnew,Hnew]=ALRHS(g,L,H,Z)
             elseif g(i,j)>=H
                g(i,j)=255-(He-g(i,j))/Z;
             else   
-               g(i,j)=(g(i,j)-L)*a-Lnew; 
+               g(i,j)=(g(i,j)-L)*a+Lnew; 
             end
         end
     end

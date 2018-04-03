@@ -1,4 +1,4 @@
-function p=HEv2(g,h)
+function [p,Lnew,Hnew]=HEv2(g,h,RL,RH)
     %im=imread('C:\Users\azril811116\DesKtop\image\image6.jpg');
     %g=rgb2gray(im);
     %figure(1),bar(P);%PDF
@@ -16,6 +16,8 @@ function p=HEv2(g,h)
     H=255*C';
     H=uint8(H);
     %figure(3),bar(H);%HE
+    Lnew=H(RL);
+    Hnew=H(RH);
     p=g;
     for i=1:255     
         p(g==i)=H(i);

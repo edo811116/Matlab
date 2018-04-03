@@ -1,13 +1,12 @@
-im=imread('C:\Users\azril811116\DesKtop\image\kindize\ultrasound\601.bmp');
+clear;
+im=imread('C:\Users\azril811116\DesKtop\image\kindize\CT\ct1.bmp');
 %L=41;H=107;
 %function std=PSTDLH(im,L,H)
     %P=adapthisteq(im);
-    %[P,L,H]=ALRHS(im,41,107,4);% ALRHS Equalization
-    %[P,L,H]=Algorithm_1(im,3,40,0.5,0.5);%Algorithm
-    %[P,L,H]=Algorithm_2(im,2,20,0,0);%Algorithm
-    %[P,L,H]=Algorithm_3(im,3,40,0.5,0.5);%Algorithm
-    [P,L,H,class]=Algorithm_4(im,3,30,0.5,0.5);%Algorithm
-    %L=87;H=132;
+    P = adapthisteq(im,'NumTiles',[8 8],'ClipLimit',0.005);
+    %[P,L,H]=Algorithm_1(im,2,40,0.3,0.45);%Algorithm
+   
+    L=7;H=247;
     [height,width]=size(P);
     queue=double(zeros(1,height*width));
     last=1;

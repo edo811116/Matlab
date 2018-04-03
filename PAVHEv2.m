@@ -1,19 +1,10 @@
 %clear;
-%g=imread('C:\Users\azril811116\DesKtop\image\kindize\CT\ct1.bmp');
-%g=rgb2gray(im);
-function [p,Lnew,Hnew,RANGE]=PAVHE(g,Q,xshift,yshift)
-    [height,width]=size(g);
+%g =imread('C:\Users\azril811116\DesKtop\image\kindize\CT\ct1.bmp');
+function [p,Lnew,Hnew,RANGE]=PAVHEv2(g,Q,xshift,yshift)
+    %xshift=0.5;yshift=0.5;limit=40;Q=2;
+    %%[height,width]=size(g);
     h=imhist(g(:));
-    %Q=3;xshift=0.5;yshift=0.5;
-    [std,RANGE]=ROIv3(g,xshift,yshift);
-    x=int16(height/2+xshift);
-    y=int16(width/2+yshift);
-
-    L=int16(g(x,y))-2*std;
-    if L<=0
-        L=2;
-    end
-    H=int16(g(x,y))+2*std;
+    [L,H,RANGE]=ROIv2(g,xshift,yshift);
     othernum1=0;
     othernum2=0;
     otherGrayscaleNum=L-1+255-H;
@@ -53,5 +44,5 @@ function [p,Lnew,Hnew,RANGE]=PAVHE(g,Q,xshift,yshift)
     %figure(2),bar(h);
     [p,Lnew,Hnew]=HEv2(g,h,L,H);
     %p=histeq(g);
-    %figure,imshow(g);
+    %figure,imshow(p);
 end

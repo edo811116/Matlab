@@ -1,5 +1,6 @@
-im=imread('C:\Users\azril811116\DesKtop\image\kindize\Xray\101.bmp');
-[queue,r,p,pp]=AICE(im,3,20,0.5,0.5);
+clear;
+im=imread('C:\Users\azril811116\DesKtop\image\kindize\CT\PELVIS.bmp');
+[queue,r,p,pp]=AICE(im,2,40,0.4,0.45);
 G=zeros(1,r-1);
 
 for i=1:r-1

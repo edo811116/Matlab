@@ -1,6 +1,6 @@
-I=rgb2gray(imread('C:\Users\azril811116\DesKtop\image\ALRHS\heart.jpg'));
-
-p = imhist(I(:));
-p(p==0) = [];
-p = p ./ numel(I);
-E = -sum(p.*log2(p));
+%x=[0,8,8,0,0]; 
+%y=[2,2,10,10,2]; 
+%plot(x,y,'r');
+[x1,y1]=ginput(1);  
+%plot(x1,y1,'+');    
+% plot([x1 x2],[y1 y2]);

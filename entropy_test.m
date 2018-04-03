@@ -1,6 +1,6 @@
-im=imread('C:\Users\azril811116\DesKtop\image\kindize\Xray\101.bmp');
+im=imread('C:\Users\azril811116\DesKtop\image\kindize\CT\ct1.bmp');
 %im=imread('C:\Users\azril811116\Desktop\image\ALRHS\brain.jpg');
-[queue,r,p,pp]=AICE(im,3,20,0.5,0.5);
+[queue,r,p,pp]=AICE(im,2,40,0.3,0.45);
     h=zeros(256,1);
     for i=1:256
         for k=1:r-1
@@ -20,7 +20,7 @@ im=imread('C:\Users\azril811116\DesKtop\image\kindize\Xray\101.bmp');
     end
     En=-E;
     %En=entropy(im);
-    %imshow(p);
+    imshow(p);
 
 
     

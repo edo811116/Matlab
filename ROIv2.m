@@ -1,19 +1,19 @@
-%Korg = rgb2gray(imread('C:\Users\azril811116\DesKtop\image\ALRHS\lumber.jpg'));
-function [L,H,RANGE]=ROI(Korg,limit,xshift,yshift)
+%clear;
+%Korg =imread('C:\Users\azril811116\DesKtop\image\kindize\CT\ct1.bmp');
+function [L,H,RANGE]=ROIv2(Korg,xshift,yshift)
+    limit=10;
     Korg=double(Korg);
     ave=imfilter(Korg,fspecial('average',[3 3]));
     [height,width]=size(Korg);
     check=zeros(height,width);
-    Kedt=double(ones(height,width).*255);
     queue=zeros(2,height*width);
     range=zeros(2,height*width);
     last=1;%last point of range
-    %xshift=0;yshift=0;Q=3;limit=20;
+    %xshift=0.5;yshift=0.5;limit=40;
     x0=int16(height*xshift);
     y0=int16(width*yshift);
     r=1;%queue right
     l=1;%queue left
-    uz=0;% unzero number
     queue(1,r)=x0;
     queue(2,r)=y0;
     r=r+1;
@@ -21,6 +21,8 @@ function [L,H,RANGE]=ROI(Korg,limit,xshift,yshift)
     range(2,last)=y0;
     last=last+1;
     check(x0,y0)=1;%此點已檢查過
+    L=Korg(x0,y0);
+    H=Korg(x0,y0);
     if limit>Korg(x0,y0)
         aaaa=1;
         return;
@@ -47,7 +49,11 @@ function [L,H,RANGE]=ROI(Korg,limit,xshift,yshift)
             for j=-1:1
                 if check(x+i,y+j)==0%此點未檢查過 
                     if abs(Korg(x+i,y+j)-Korg(x0,y0))<limit
-                        Kedt(x+i,y+j)=Korg(x+i,y+j);
+                        if Korg(x+i,y+j)>H
+                            H=Korg(x+i,y+j);
+                        elseif Korg(x+i,y+j)<L
+                            L=Korg(x+i,y+j);
+                        end
                         check(x+i,y+j)=1;%此點已檢查過
                         queue(1,r)=x+i;
                         queue(2,r)=y+j;
@@ -55,9 +61,12 @@ function [L,H,RANGE]=ROI(Korg,limit,xshift,yshift)
                         range(1,last)=x+i;
                         range(2,last)=y+j;
                         last=last+1;
-                        
-                     elseif abs(ave(x+i,y+j)-Korg(x0,y0))<limit
-                        Kedt(x+i,y+j)=Korg(x+i,y+j);
+                    elseif abs(ave(x+i,y+j)-Korg(x0,y0))<limit  
+                        if Korg(x+i,y+j)>H
+                            H=Korg(x+i,y+j);
+                        elseif Korg(x+i,y+j)<L
+                            L=Korg(x+i,y+j);
+                        end
                         check(x+i,y+j)=1;%此點已檢查過
                         queue(1,r)=x+i;
                         queue(2,r)=y+j;
@@ -73,32 +82,5 @@ function [L,H,RANGE]=ROI(Korg,limit,xshift,yshift)
          end
        l=l+1;
     end
-    Kedt=uint8(Kedt);
-    %figure,imshow(Kedt);
-    %figure,imshow(Korg);
-    %P=Kedt;
-    p=imhist(Kedt);
-    p(256)=0;
-    %figure,bar(p);
-    
     RANGE=[max(range(1,1:last-1)) min(range(1,1:last-1));max(range(2,1:last-1)) min(range(2,1:last-1))];
-    for i=1:256  %find L of ROI
-        if p(i)~=0
-            uz=uz+1;
-        end
-        if uz>1
-            L=i;
-            uz=0;
-            break;
-        end
-    end
-    for i=256:-1:L  %find H of ROI
-        if p(i)~=0
-            uz=uz+1;
-        end
-        if uz>1
-            H=i;
-            break;
-        end
-    end
 end
