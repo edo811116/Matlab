@@ -1,6 +1,3 @@
-%x=[0,8,8,0,0]; 
-%y=[2,2,10,10,2]; 
-%plot(x,y,'r');
-[x1,y1]=ginput(1);  
-%plot(x1,y1,'+');    
-% plot([x1 x2],[y1 y2]);
+clear;
+im=imread('C:\Users\azril811116\DesKtop\image\kindize\CT\PELVIS.bmp');
+[L,H,~]=ROI(im,10,0.4707,0.4629);

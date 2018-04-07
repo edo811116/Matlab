@@ -1,4 +1,5 @@
-%Korg = rgb2gray(imread('C:\Users\azril811116\DesKtop\image\ALRHS\lumber.jpg'));
+%clear;
+%Korg =imread('C:\Users\azril811116\DesKtop\image\kindize\CT\ct1.bmp');
 function [L,H,RANGE]=ROI(Korg,limit,xshift,yshift)
     Korg=double(Korg);
     ave=imfilter(Korg,fspecial('average',[3 3]));
@@ -8,7 +9,7 @@ function [L,H,RANGE]=ROI(Korg,limit,xshift,yshift)
     queue=zeros(2,height*width);
     range=zeros(2,height*width);
     last=1;%last point of range
-    %xshift=0;yshift=0;Q=3;limit=20;
+    %xshift=0.5;yshift=0.5;limit=10;
     x0=int16(height*xshift);
     y0=int16(width*yshift);
     r=1;%queue right

@@ -9,7 +9,7 @@ function [L,H,RANGE]=ROIv2(Korg,xshift,yshift)
     queue=zeros(2,height*width);
     range=zeros(2,height*width);
     last=1;%last point of range
-    %xshift=0.5;yshift=0.5;limit=40;
+    %xshift=0.5;yshift=0.5;
     x0=int16(height*xshift);
     y0=int16(width*yshift);
     r=1;%queue right

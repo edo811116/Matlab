@@ -9,11 +9,11 @@ MODE=zeros(1,256);
 last=ones(1,256);%mode last
 rast=ones(1,256);%R last
 cast=ones(1,256);%change last
-y1=0.5898;
-x1=0.3359;
-%L=0;H=255;
+y1=0.3664;
+x1=0.5683;
+%L=73;H=248;
 %P = adapthisteq(Im,'NumTiles',[8 8],'ClipLimit',0.002);
-[P,L,H,RANGE]=Algorithm_1(Im,1.5,20,y1,x1);%Algorithm
+[P,L,H,RANGE]=Algorithm_1(Im,4,20,y1,x1);%Algorithm
 
 
 for I=L+1:H+1

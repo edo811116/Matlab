@@ -1,12 +1,17 @@
 clear;
-im=imread('C:\Users\azril811116\DesKtop\image\kindize\CT\ct1.bmp');
-%L=41;H=107;
-%function std=PSTDLH(im,L,H)
-    %P=adapthisteq(im);
-    P = adapthisteq(im,'NumTiles',[8 8],'ClipLimit',0.005);
-    %[P,L,H]=Algorithm_1(im,2,40,0.3,0.45);%Algorithm
-   
-    L=7;H=247;
+im=imread('C:\Users\azril811116\DesKtop\image\kindize\nmri\mri.bmp');
+
+%L=1;H=256;
+y1=0.5898;
+x1=0.3359;
+%[L,H,RANGE]=ROI(P,10,y1,x1);
+%P=adapthisteq(im);
+%P = adapthisteq(im,'NumTiles',[8 8],'ClipLimit',0.002);
+%[P,L,H,RANGE]=Algorithm_1(im,4,10,y1,x1);%Algorithm
+%[P,L,H,RANGE]=Algorithm_3(im,2,y1,x1);
+%[P,L,H,RANGE]=PAVHE(im,1.5,y1,x1);
+%[P,L,H,RANGE]=PAVHEv2(im,2,y1,x1);
+
     [height,width]=size(P);
     queue=double(zeros(1,height*width));
     last=1;

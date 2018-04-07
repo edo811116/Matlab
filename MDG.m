@@ -1,5 +1,6 @@
+clear;
 %Im = rgb2gray(imread('C:\Users\azril811116\DesKtop\image\ALRHS\lumber.jpg'));
-Im=imread('C:\Users\azril811116\DesKtop\image\kindize\NUmagnetic\ct1.bmp');
+Im=imread('C:\Users\azril811116\DesKtop\image\kindize\CT\640.bmp');
 [height,width]=size(Im);
 mode=zeros(2,height*width,256);
 change=ones(height*width,256).*1000;
@@ -9,15 +10,12 @@ cast=ones(1,256);%change last
 mgast=ones(1,256);%mdg last
 Max=0;
 Min=0;
-%P=adapthisteq(Im);
-%[P,L,H]=ALRHS(Im,164,220,4);% ALRHS Equalization
-%P=PAVHE(Im,2,0,0);%PAVHE Equalization
-%P=HEv2(Im,imhist(g(:)));%HE
-%[P,L,H]=Algorithm_1(Im,3,30,0.5,0.5);%Algorithm
-%P=Algorithm_2(Im,3,50,0.5,0.5);%Algorithm
-%[P,L,H]=Algorithm_3(Im,3,30,0.5,0.5);%Algorithm
-[P,L,H,class]=Algorithm_4(Im,3,40,0.5,0.5);%Algorithm
-%L=164;H=220;
+y1=0.5898;
+x1=0.3359;
+%L=0;H=255;
+%P = adapthisteq(Im,'NumTiles',[8 8],'ClipLimit',0.002);
+[P,L,H,RANGE]=Algorithm_1(Im,4,20,y1,x1);%Algorithm
+
 for i=L+1:H+1
     for x=1:height
         for y=1:width

@@ -1,10 +1,10 @@
-%im=imread('C:\Users\azril811116\DesKtop\image\ALRHS\heart.jpg');
-%g=rgb2gray(im);
-%figure,imshow(g);
-function [p,L,H]=Algorithm_3(g,Q,limit,xshift,yshift)%Algorithm_1(gorg,Q,limit,xshift,yshift)
-    %Q=3;limit=50;xshift=0;yshift=0;
-    [L,H,RANGE]=ROI(g,limit,xshift,yshift);%[Pedt,L,H,range,last]=ROI(gorg,limit,xshift,yshift)
+%clear;
+%g =imread('C:\Users\azril811116\DesKtop\image\kindize\CT\ct1.bmp');
+function [p,Lnew,Hnew,RANGE]=Algorithm_3(g,Q,xshift,yshift)
+    %xshift=0.5;yshift=0.5;limit=40;Q=2;
+    %%[height,width]=size(g);
     h=imhist(g(:));
+    [L,H,RANGE]=ROIv2(g,xshift,yshift);
     othernum1=0;
     othernum2=0;
     otherGrayscaleNum=L-1+255-H;
@@ -41,23 +41,8 @@ function [p,L,H]=Algorithm_3(g,Q,limit,xshift,yshift)%Algorithm_1(gorg,Q,limit,x
             h(i+1)=otherAvg;
         end
     end
-
-    %figure,bar(h);
-    p=HEv4(g,h,L,H);
-    %HEv4;
-    %ph=imhist(p);
-    %figure,bar(ph);
-    %print range
-  %{
-        for i=RANGE(1,2):RANGE(1,1)
-            p(i,RANGE(2,1))=0;
-            p(i,RANGE(2,2))=0;
-        end
-        for i=RANGE(2,2):RANGE(2,1)
-            p(RANGE(1,1),i)=0;
-            p(RANGE(1,2),i)=0;
-        end
-  %}  
+    %figure(2),bar(h);
+    [p,Lnew,Hnew]=HEv2(g,h,L,H);
+    %p=histeq(g);
     %figure,imshow(p);
-    %E=entropy(p);
 end

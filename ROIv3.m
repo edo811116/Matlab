@@ -1,6 +1,6 @@
 %clear;
 %Korg =imread('C:\Users\azril811116\DesKtop\image\kindize\CT\ct1.bmp');
-function [std,RNAGE]=ROIv3(Korg,xshift,yshift)
+function [std,RANGE]=ROIv3(Korg,xshift,yshift)
     R=224*224;limit=10;
     Korg=double(Korg);
     ave=imfilter(Korg,fspecial('average',[3 3]));

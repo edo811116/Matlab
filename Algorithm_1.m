@@ -1,7 +1,7 @@
 %im=imread('C:\Users\azril811116\DesKtop\image\image6.jpg');
 %g=rgb2gray(im);
 %figure,imshow(g);
-function [p,Lnew,Hnew]=Algorithm_1(g,Q,limit,xshift,yshift)%Algorithm_1(gorg,Q,limit,xshift,yshift)
+function [p,Lnew,Hnew,RANGE]=Algorithm_1(g,Q,limit,xshift,yshift)%Algorithm_1(gorg,Q,limit,xshift,yshift)
     %Q=2;limit=50;xshift=-30;yshift=0;
     [L,H,RANGE]=ROI(g,limit,xshift,yshift);%[Pedt,L,H,range,last]=ROI(gorg,limit,xshift,yshift)
     h=imhist(g(:));
